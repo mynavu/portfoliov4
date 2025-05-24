@@ -1,3 +1,4 @@
+import { Github, Cake, Linkedin, Mail, Backpack, Sparkles, CircleFadingArrowUp } from 'lucide-react';
 import SpotlightCard from './SpotlightCard';
 
 export const AboutMobile = ({ image, currentData }) => {
@@ -68,8 +69,8 @@ export const AboutMobile = ({ image, currentData }) => {
 
         </SpotlightCard>
         <SpotlightCard className="custom-spotlight-card quests">
-        <h3 className="titleFont white center">quests&nbsp; 
-                        <i className="bi bi-backpack4-fill"></i>
+        <h3 className="titleFont center white">quests&nbsp; 
+                        <Backpack />
                     </h3>
                     <h4 className="titleFont white">current</h4>
                     <div className="questBar">
@@ -94,8 +95,8 @@ export const AboutMobile = ({ image, currentData }) => {
                 <h4 className='center'>→ view my <a href='./Resume.pdf' className='underline' target="_blank">resume</a></h4>
         </div>
         <SpotlightCard className="custom-spotlight-card skillsContainer">
-        <h3 className="titleFont white center">skills&nbsp;
-             <i className="bi bi-stars"></i>
+        <h3 className="titleFont center white">skills&nbsp;
+             <Sparkles />
             </h3>
             <div className="fourSkills">
                 <div className="langContainer">
@@ -138,8 +139,8 @@ export const AboutMobile = ({ image, currentData }) => {
             </div>
         </SpotlightCard>
         <SpotlightCard className="custom-spotlight-card achievementsContainer">
-        <h3 className="titleFont white center">achievements <br></br>unlocked&nbsp;
-            <i className="bi bi-unlock-fill"></i>
+        <h3 className="titleFont center white">achievements&nbsp;
+            <CircleFadingArrowUp />
             </h3>
             <div className="achievements">
                 <div className="achievement">

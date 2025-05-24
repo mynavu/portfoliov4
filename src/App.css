@@ -25,6 +25,7 @@ html, body {
   cursor: not-allowed;
 }
 
+
 .projectTitle {
   display: flex;
   flex-direction: row;
@@ -695,6 +696,11 @@ i {
     width: 100%;
     margin: 0;
     padding: 0;
+  }
+
+
+  .projectsContainer {
+    width: 400px;
   }
 
 

@@ -4,8 +4,6 @@ import MagnetLines from './MagnetLines';
 
 import { useState, useEffect } from 'react';
 
-
-
 export const Projects = ({ currentData }) => {
     return (
         <div>
