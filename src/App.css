@@ -700,7 +700,8 @@ i {
 
 
   .projectsContainer {
-    width: 350px;
+    width: 400px;
+    margin: 40px auto 40px auto;
   }
 
 
@@ -713,10 +714,6 @@ i {
   bottom: 45px;
 }
   .aboutContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     gap: 0px;
     margin-top: 40px;
     max-width: 450px;
