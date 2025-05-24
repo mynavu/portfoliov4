@@ -28,7 +28,7 @@ const projectsData = [
     tags: ["React", "Supabase", "PostgreSQL", "TailwindCSS", "Realtime"]
   },
   {
-    name: "RedTakes",
+    name: "RedTakes (under construction)",
     imageUrl: "/redtakes.png", 
     videoUrl: "/vocabularVideo.gif",
     caption: "Tool that takes inputs (keyword, subreddit, flare) and analyzes the sentiment of Reddit users, then visualizes it with a pie chart.",
