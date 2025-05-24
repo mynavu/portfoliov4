@@ -4,7 +4,7 @@ import "slick-carousel/slick/slick-theme.css";
 
 import SpotlightCard from './SpotlightCard';
 
-export const AboutMobile = ({ image, currentData, onFinishLoading }) => {
+export const AboutMobile = ({ image, currentData }) => {
     const settings = {
         dots: true,
         infinite: true,
@@ -15,12 +15,21 @@ export const AboutMobile = ({ image, currentData, onFinishLoading }) => {
       };
     return (
     <section id="home">
+        <nav className='nav'>
+            <div className='logo'>
+                <a className='specialFont' href='/'>M</a>
+            </div>
+            <div className='flex flex-row items-center gap-30 navSec'>
+                <a className='about' href='/'>about</a>
+                <a className='projects' href="/Projects">projects</a>
+            </div>
+        </nav>
         <div className="aboutContainer">
         <SpotlightCard className="custom-spotlight-card bio">
         <p className='thin long'>
-                    ◆ software dev and student studying <span className='white'>cs</span> and <span className='white'>stat</span>
+                    ◆ software dev and student studying <span className='white'>cs</span>
                     <br></br>
-                    ◇ actively engagged in <span className='white'>software engineering</span> and <span className='white'>data science</span>
+                    ◇ interests: <span className='white'>tech, probability, design, game theory</span>
                     <br></br>
                     ◆ currently taking courses in <span className='white'>cs, maths, stat, and econ</span>
                     </p>
@@ -29,25 +38,29 @@ export const AboutMobile = ({ image, currentData, onFinishLoading }) => {
         <h3 className="titleFont white center">myna vu</h3>
                     <div className="profile">
                     </div>
+
+                    <div className='imageContainer'>
                     <img className="profileImage" src='/profile.png'></img>
+                    <div className='profileIcon'>&nbsp;🍧</div>
+                    </div>
                     <p className='center white'>rank: first year CS student</p>
                     <p className='center white'>spawn: Vietnam</p>
                     <div className="questBar">
                             <p className="label">gpa</p>
                             <div className="progressBar">
-                                <div className={`yellowBar ${onFinishLoading ? 'nintyPercent' : ''}`}></div>
+                                <div className={`yellowBar nintyPercent`}></div>
                             </div>
                     </div>
                     <div className="questBar">
                             <p className="label">sleep</p>
                             <div className="progressBar">
-                                <div className={`blueBar ${onFinishLoading ? 'twentyPercent' : ''}`}></div>
+                                <div className={`blueBar twentyPercent`}></div>
                             </div>
                     </div>
                     <div className="questBar">
                             <p className="label">vibes</p>
                             <div className="progressBar">
-                                <div className={`pinkBar ${onFinishLoading ? 'hundredPercent' : ''}`}></div>
+                                <div className={`pinkBar hundredPercent`}></div>
                             </div>
                     </div>
                     <h4 className="titleFont white">contact</h4>
@@ -72,17 +85,17 @@ export const AboutMobile = ({ image, currentData, onFinishLoading }) => {
                     <div className="questBar">
                         <p className="label">BSc in cs</p>
                         <div className="progressBar">
-                            <div className={`greenBar ${onFinishLoading ? 'tenPercent' : ''}`}></div>
+                            <div className={`greenBar tenPercent`}></div>
                         </div>
                     </div>
                     <div className="questBar">
                         <p className="label">undergrad research project</p>
                         <div className="progressBar">
-                            <div className={`greenBar ${onFinishLoading ? 'tenPercent' : ''}`}></div>
+                            <div className={`greenBar tenPercent`}></div>
                         </div>
                     </div>
         </SpotlightCard>
-                <h4 className='center'>→ view my <a href='http://qrco.de/bfxmLg' target="_blank">resume</a></h4>
+                <h4 className='center'>→ view my <a href='./Resume.pdf' className='underline' target="_blank">resume</a></h4>
         </div>
         <SpotlightCard className="custom-spotlight-card skillsContainer">
         <h3 className="titleFont white center">skills&nbsp;
@@ -163,24 +176,6 @@ export const AboutMobile = ({ image, currentData, onFinishLoading }) => {
                 </div>
             </div>
         </SpotlightCard>
-        <h3 className="titleFont white center">projects&nbsp;
-            <i className="bi bi-folder-fill"></i>
-        </h3>
-        <div className="projectsContainer">
-                <Slider {...settings}>
-                    {currentData.map(data => (
-                        <SpotlightCard className="custom-spotlight-card card">
-                            <img className='thumbnail' src={data.imageUrl}></img>
-                            <h4 className='titleFont center white'>{data.name}</h4>
-                            <p className='small center thin'>{data.caption}</p>
-                            <div className='projectLinks'>
-                                <a href={data.webUrl} target="_blank"><i className="bi bi-box-arrow-up-right"></i></a>
-                                <a href={data.github} target="_blank"><i className="bi bi-github"></i></a>
-                            </div>
-                        </SpotlightCard>
-                    ))}
-                </Slider>
-        </div>
         <div className='footer'>
             <p className='credits'>made with <i className="bi bi-heart-fill pink"></i> and <i className="fa-brands fa-react cyan"></i></p>
             <h5 className=''>2025 © myna vu</h5>

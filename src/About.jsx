@@ -1,13 +1,22 @@
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
+import { Github, Cake, Linkedin, Mail, Backpack, Sparkles, CircleFadingArrowUp } from 'lucide-react';
 import SpotlightCard from './SpotlightCard';
-  
 import MagnetLines from './MagnetLines';
 
+import { useState, useEffect } from 'react';
 
-export const About = ({ currentData, onFinishLoading }) => {
+
+
+export const About = ({ currentData }) => {
+
+    const [windowsLoaded, setWindowsLoaded] = useState(false);
+
+    useEffect(() => {
+        setWindowsLoaded(true);
+    }, [])
+
     const settings = {
         dots: true,
         infinite: true,
@@ -36,20 +45,29 @@ export const About = ({ currentData, onFinishLoading }) => {
     pointerEvents: "none", // Allow clicks to pass through
   }}
 />
+        <nav className='nav'>
+            <div className='logo'>
+                <a className='specialFont' href='/'>M</a>
+            </div>
+            <div className='flex flex-row items-center gap-30 navSec'>
+                <a className='about' href='/'>about</a>
+                <a className='projects' href="/Projects">projects</a>
+            </div>
+        </nav>
         <div className="aboutContainer">
             <div className="bioAndQuests">
             <SpotlightCard className="custom-spotlight-card bio">
             <p className='thin long'>
-                    ◆ software dev and student studying <span className='white'>cs</span> and <span className='white'>stat</span>
+                    ◆ software dev and student studying <span className='white'>cs</span>
                     <br></br>
-                    ◇ actively engagged in <span className='white'>software engineering</span> and <span className='white'>data science</span>
+                    ◇ interests: <span className='white'>tech, probability, design, game theory</span>
                     <br></br>
                     ◆ currently taking courses in <span className='white'>cs, maths, stat, and econ</span>
                     </p>
             </SpotlightCard>
             <SpotlightCard className="custom-spotlight-card quests">
             <h3 className="titleFont center white">quests&nbsp; 
-                        <i className="bi bi-backpack4-fill"></i>
+                        <Backpack />
                     </h3>
                     <h4 className="titleFont white">current</h4>
                     <div className="questBar">
@@ -59,56 +77,59 @@ export const About = ({ currentData, onFinishLoading }) => {
                     </div>
                     <h4 className="titleFont white">in progress</h4>
                     <div className="questBar">
-                        <p className="label">BSc in cs</p>
+                        <p className="label">BSc in CS</p>
                         <div className="progressBar">
-                            <div className={`greenBar ${onFinishLoading ? 'tenPercent' : ''}`}></div>
+                            <div className={`greenBar ${windowsLoaded ? 'tenPercent' : ''}`}></div>
                         </div>
                     </div>
                     <div className="questBar">
                         <p className="label">undergrad research project</p>
                         <div className="progressBar">
-                            <div className={`greenBar ${onFinishLoading ? 'tenPercent' : ''}`}></div>
+                            <div className={`greenBar ${windowsLoaded ? 'tenPercent' : ''}`}></div>
                         </div>
                     </div>
             </SpotlightCard>
-                <h4 className='center'>→ view my <a href='http://qrco.de/bfxmLg' target="_blank">resume</a></h4>
+                <h4 className='center'>→ view my <a href='./Resume.pdf' className='underline' target="_blank">resume</a></h4>
             </div>
             <SpotlightCard className="custom-spotlight-card stats">
             <h3 className="titleFont center white">myna vu</h3>
                 <div className="profile">
                 </div>
-                <img className="profileImage" src='/profile.png'></img>
+                <div className='imageContainer'>
+                    <img className="profileImage" src='/profile.png'></img>
+                    <div className='profileIcon'>&nbsp;🍧</div>
+                </div>
                 <p className='center white'>rank: first year CS student</p>
                 <p className='center white'>spawn: Vietnam</p>
                 <div className="questBar">
                         <p className="label">gpa</p>
                         <div className="progressBar">
-                            <div className={`yellowBar ${onFinishLoading ? 'nintyPercent' : ''}`}></div>
+                            <div className={`yellowBar ${windowsLoaded ? 'nintyPercent' : ''}`}></div>
                         </div>
                 </div>
                 <div className="questBar">
                         <p className="label">sleep</p>
                         <div className="progressBar">
-                            <div className={`blueBar ${onFinishLoading ? 'twentyPercent' : ''}`}></div>
+                            <div className={`blueBar ${windowsLoaded ? 'twentyPercent' : ''}`}></div>
                         </div>
                 </div>
                 <div className="questBar">
                         <p className="label">vibes</p>
                         <div className="progressBar">
-                            <div className={`pinkBar ${onFinishLoading ? 'hundredPercent' : ''}`}></div>
+                            <div className={`pinkBar ${windowsLoaded ? 'hundredPercent' : ''}`}></div>
                         </div>
                 </div>
                 <h4 className="titleFont white">contact</h4>
                 <div className="contacts">
-                    <a href="https://www.linkedin.com/in/myna-vu-237091322/" target="_blank"><i className="bi bi-linkedin"></i></a>
-                    <a href="https://github.com/mynavu" target="_blank"><i className="bi bi-github"></i></a>
-                    <a href="mailto:avu13@uclive.ac.nz"><i className="bi bi-envelope-fill"></i></a>
+                    <a href="https://www.linkedin.com/in/myna-vu-237091322/" target="_blank"><Linkedin className='socials'/></a>
+                    <a href="https://github.com/mynavu" target="_blank"><Github className='socials'/></a>
+                    <a href="mailto:avu13@uclive.ac.nz"><Mail className='socials'/></a>
                 </div>
             </SpotlightCard>
         </div>
         <SpotlightCard className="custom-spotlight-card skillsContainer">
-        <h3 className="titleFont center white white">skills&nbsp;
-             <i className="bi bi-stars"></i>
+        <h3 className="titleFont center white">skills&nbsp;
+             <Sparkles />
             </h3>
             <div className="fourSkills">
                 <div className="langContainer">
@@ -151,8 +172,8 @@ export const About = ({ currentData, onFinishLoading }) => {
             </div>
         </SpotlightCard>
         <SpotlightCard className="custom-spotlight-card achievementsContainer">
-        <h3 className="titleFont center white">achievements unlocked&nbsp;
-            <i className="bi bi-unlock-fill"></i>
+        <h3 className="titleFont center white">achievements&nbsp;
+            <CircleFadingArrowUp />
             </h3>
             <div className="achievements">
                 <div className="achievement">
@@ -185,24 +206,6 @@ export const About = ({ currentData, onFinishLoading }) => {
                 </div>
             </div>
         </SpotlightCard>
-        <div className="projectsContainer">
-            <h3 className="titleFont center white">projects&nbsp;
-                <i className="bi bi-folder-fill"></i>
-            </h3>
-                <Slider {...settings}>
-                    {currentData.map(data => (
-                        <SpotlightCard className="custom-spotlight-card card">
-<img className='thumbnail' src={data.imageUrl}></img>
-                            <h4 className='titleFont center white'>{data.name}</h4>
-                            <p className='small center thin'>{data.caption}</p>
-                            <div className='projectLinks'>
-                                <a href={data.webUrl} target="_blank"><i className="bi bi-box-arrow-up-right"></i></a>
-                                <a href={data.github} target="_blank"><i className="bi bi-github"></i></a>
-                            </div>
-                        </SpotlightCard>
-                    ))}
-                </Slider>
-        </div>
         <div className='footer'>
             <p className='credits'>made with <i className="bi bi-heart-fill pink"></i> and <i className="fa-brands fa-react cyan"></i></p>
             <h5 className=''>2025 © myna vu</h5>

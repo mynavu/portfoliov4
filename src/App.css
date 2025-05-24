@@ -21,16 +21,52 @@ html, body {
   background: rgb(24, 24, 24);
 }
 
+.invalidLink {
+  cursor: not-allowed;
+}
+
+.projectTitle {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px;
+  align-items: center;
+}
+
+.padding {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  width: 800px;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+
+
+.logo {
+  grid-column: 1;
+}
+
+.navSec {
+  gap: 20px;
+  display: flex;
+}
+
 body * {
   z-index: 2;
 }
 
-.white {
-  color: white;
+.specialFont {
+  font-family: "MuseoModerno";
+  font-size: 20px;
 }
 
-.thumbnail {
-  border-radius: 5px;
+.white {
+  color: white;
 }
 
 .loader {
@@ -106,11 +142,33 @@ body * {
 
 a {
   color: rgb(202, 202, 202) !important;
+  cursor: pointer;
+  text-decoration: none;
 }
 
 a:hover {
   color: white !important;
 }
+
+.imageContainer {
+  position: relative;
+}
+
+.profileIcon {
+  background: rgb(24, 24, 24);
+  position: absolute;
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  padding: 8px 18px 8px 0px;
+  border: rgb(79, 79, 79) solid 1px;
+  border-radius: 50%;
+  right: 30px;
+  bottom: 50px;
+  font-size: 20px;
+
+}
+
 
 .aboutContainer {
   display: flex;
@@ -120,11 +178,51 @@ a:hover {
   margin-top: 40px;
 }
 
-.skillsContainer, .achievementsContainer, .projectsContainer, .footer {
+.skillsContainer, .achievementsContainer, .footer {
   width: 750px;
   display: flex;
   flex-direction: column;
   justify-self: center;
+}
+
+.projectsContainer {
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.img-wrapper {
+  position: relative;
+  width: 100%;
+  height: 250px;
+}
+
+.img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 5px;
+}
+
+.underConstruction {
+  z-index: 5;
+}
+
+.img.hover {
+  opacity: 0;
+}
+
+.img-wrapper:hover .hover {
+  opacity: 1;
+}
+
+.img-wrapper:hover .normal {
+  opacity: 0;
 }
 
 
@@ -155,6 +253,20 @@ a:hover {
   margin-top: 20px;
 }
 
+.tagList {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tag {
+  background: rgb(24, 24, 24);
+  border-radius: 20px;
+  border: rgb(79, 79, 79) solid 1px;
+  padding: 5px;
+}
+
 .bioAndQuests {
   display: flex;
   flex-direction: column;
@@ -172,6 +284,7 @@ a:hover {
 
 .quests {
   padding-bottom: 20px;
+  margin-bottom: 0;
 }
 
 p {
@@ -439,23 +552,28 @@ h4 {
 .achievementName {
   border-radius: 50px;
   padding: 5px 5px 5px 0px;
+  font-size: 12px;
 }
 
 .yellowBorder {
-  border: solid #d5b500 5px;
+  border: solid #d5b500 2px;
+  background: #625408;
 
 }
 
 .greenBorder {
-  border: solid #37b860 5px;
+  border: solid #37b860 2px;
+  background: #1c6333;
 }
 
 .pinkBorder {
-  border: solid #ff68c5 5px;
+  border: solid #ff68c5 2px;
+  background: #68204d;
 }
 
 .purpleBorder {
-  border: solid #795bff 5px;
+  border: solid #5b9fff 2px;
+  background: #16427f;
 }
 
 i {
@@ -465,27 +583,27 @@ i {
 
 .bi-trophy-fill {
   border-radius: 50%;
-  padding: 6px 10px 6px 10px;
+  padding: 6px 8px 6px 8px;
   background: #d5b500;
 
 }
 
 .bi-mortarboard-fill {
   border-radius: 50%;
-  padding: 6px 10px 6px 10px;
+  padding: 6px 8px 6px 8px;
   background: #37b860;
 }
 
 .bi-cake-fill {
   border-radius: 50%;
-  padding: 6px 10px 6px 10px;
+  padding: 6px 8px 6px 8px;
   background: #ff68c5;
 }
 
 .bi-palette-fill {
   border-radius: 50%;
-  padding: 6px 10px 6px 10px;
-  background: #795bff;
+  padding: 6px 8px 6px 8px;
+  background:#5b9fff;
 }
 
 .contacts {
@@ -503,6 +621,11 @@ i {
     color: white !important;
 }
 
+.socials {
+  height: 30px;
+  width: 30px;
+
+}
 
 .bi-linkedin, .bi-github, .bi-envelope-fill, .bi-box-arrow-up-right{
   font-size: 30px;
@@ -520,12 +643,15 @@ i {
   transform: rotate(var(--rotate));
 }
 
+.underline {
+  text-decoration: underline;
+}
 
 .card {
   border: solid 1px rgb(59, 59, 59);
   background: #111;
   border-radius: 10px;
-  height: 285px;
+  height: auto;
   padding: 5px 10px 0 10px;
 }
 
@@ -555,10 +681,12 @@ i {
 .projectLinks {
   display: flex;
   justify-content: center;
+  gap: 10px;
 }
 
 .projectLinks * {
-  font-size: 20px;
+  height: 20px;
+  weight: 20px
 }
 
 @media (max-width: 800px) {
@@ -569,6 +697,15 @@ i {
     padding: 0;
   }
 
+
+.nav {
+  width: 350px;
+}
+
+.profileIcon {
+  right: 50px;
+  bottom: 45px;
+}
   .aboutContainer {
     display: flex;
     flex-direction: column;

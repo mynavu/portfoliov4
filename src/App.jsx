@@ -1,64 +1,77 @@
 import { useState, useEffect } from 'react'
-import {LoadingScreen} from './LoadingScreen'
 import './index.css'
 import './App.css'
 import { About } from './About'
 import { AboutMobile } from './AboutMobile'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { Projects } from './Projects'
 
 const projectsData = [
   {
+    name: "Summarizzler",
+    imageUrl: "/summarizzler.png", 
+    videoUrl: "/summarizzlerVideo1.gif",
+    caption: "AI powered web extension that give text summaries using Gen Alpha dialect.",
+    webUrl: "https://github.com/mynavu/Summarizzler",
+    github: "https://github.com/mynavu/Summarizzler",
+    underConstruction: false,
+    tags: ["Gemini API", "Web Extension", "JavaScript"]
+  },
+  {
     name: "Whoizit?",
     imageUrl: "/whoizit.png", 
-    caption: "Web version of the board game “Guess Who?” with custom sets. Built with react and supabase.",
+    videoUrl: "/whoizitVideo.gif",
+    caption: "Web version of the board game “Guess Who?” with customizable sets and realtime connection.",
     webUrl: "https://whoizit.netlify.app/",
-    github: "https://github.com/mynavu/Whoizit"
+    github: "https://github.com/mynavu/Whoizit",
+    underConstruction: false,
+    tags: ["React", "Supabase", "PostgreSQL", "TailwindCSS", "Realtime"]
   },
   {
     name: "RedTakes",
     imageUrl: "/redtakes.png", 
-    caption: "Analyzes the sentiment of Reddit users using the Reddit and Hugging Face API. Built with react.",
+    videoUrl: "/vocabularVideo.gif",
+    caption: "Tool that takes inputs (keyword, subreddit, flare) and analyzes the sentiment of Reddit users, then visualizes it with a pie chart.",
     webUrl: "https://redtakes.netlify.app/",
-    github: "https://github.com/mynavu/RedTakes"
+    github: "https://github.com/mynavu/RedTakes",
+    underConstruction: true,
+    tags: ["React", "TailwindCSS", "HuggingFace API", "Reddit API"]
   },
   {
     name: "Globit",
     imageUrl: "/globit.png", 
-    caption: "Full stack app for users to geotag images onto a personal globe. Built with vanilla JS and Supabase.",
+    videoUrl: "/globitVideo.gif",
+    caption: "Full stack CRUD app for users to geotag images onto a personal globe + collectable digital stamps for each post on a siginificant region.",
     webUrl: "https://globit.netlify.app/",
-    github: "https://github.com/mynavu/Globit-V2"
+    github: "https://github.com/mynavu/Globit-V2",
+    underConstruction: false,
+    tags: ["Supabase", "PostgreSQL", "JavaScript", "MapBox API"]
   },
   {
     name: "Vocabular",
     imageUrl: "/vocabular.png", 
-    caption: "Wordle clone for English learners to learn new vocabularies. Built with vanilla JS and D3.",
+    videoUrl: "/vocabularVideo.gif",
+    caption: "Wordle clone for English learners to learn new vocabularies + store them for review.",
     webUrl: "https://mynavu.github.io/Vocabular/",
-    github: "https://github.com/mynavu/Vocabular"
+    github: "https://github.com/mynavu/Vocabular",
+    underConstruction: false,
+    tags: ["JavaScript","Dictionary API", "Unsplash API"]
   },
   {
     name: "Word Cloud for Messages",
     imageUrl: "/wordcloud.png", 
-    caption: "Visualizing user's word frequencies from messages. Built with vanilla JS.",
+    videoUrl: "/wordCloudVideo.gif",
+    caption: "Visualizing user's word frequencies from their Instagram or Facebook messages with a word cloud.",
     webUrl: "https://mynavu.github.io/Word-Cloud-for-Messages/",
-    github: "https://github.com/mynavu/Word-Cloud-for-Messages"
-  },
-  {
-    name: "Art Portfolio",
-    imageUrl: "/art.png", 
-    caption: "Includes all my best work across various mediums. Built with vanilla JS.",
-    webUrl: "https://mynavu.github.io/art-portfolio/index.html",
-    github: "https://github.com/mynavu/art-portfolio"
+    github: "https://github.com/mynavu/Word-Cloud-for-Messages",
+    underConstruction: false,
+    tags: ["JavaScript","D3.js"]
   }
 ]
 
 
 function App() {
-  const [isLoaded, setIsLoaded] = useState(false);
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    setTimeout(() => setIsVisible(true), 3500);
-  }, []);
 
   useEffect(() => {
     const handleResize = () => setScreenWidth(window.innerWidth);
@@ -68,20 +81,18 @@ function App() {
 
   return (
     <>
-      {!isLoaded && <LoadingScreen onComplete={() => setIsLoaded(true)} />}
-      {isLoaded && (
-        <div className={`${isLoaded ? 'unhidden' : 'hidden'}`}>
-          {screenWidth > 800 ? (
-            <>
-              <About currentData={projectsData} onFinishLoading={isVisible} />
-            </>
-          ) : (
-            <>
-              <AboutMobile currentData={projectsData} onFinishLoading={isVisible}/>
-            </>
-          )}
-        </div>
-      )}
+    <BrowserRouter>
+        <Routes>
+          <Route index element={
+            screenWidth > 800 ? (
+            <About currentData={projectsData} />
+            ) : (
+            <AboutMobile currentData={projectsData} />
+            )}
+          />
+          <Route path="/Projects" element={<Projects currentData={projectsData}/>} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }
